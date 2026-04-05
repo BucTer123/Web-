@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI</title>
+</head>
+<style>
+  body {
+    background: whitesmoke;
+    color: black;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: bolder;
+    font-style: initial;
+    padding: 0;
+    margin: 0;
+    max-width: 1920px;
+    width: 100%;
+    max-height: 1080px;
+    height: 100%;
+  }
+
+  .contr {
+    background: ghostwhite;
+    color: black;
+    padding: 192px;
+    margin: 108px;
+  }
+
+  button {
+    background: black;
+    color: white;
+    padding: 12px;
+    margin: 6px;
+    border: 1px solid dimgray;
+    opacity: 1;
+  }
+
+  button:focus {
+    background: white;
+    color: black;
+    border: 1px solid blue;
+  }
+
+  button:hover {
+    opacity: 0.5;
+    transform: translateY(4px);
+  }
+
+  button:active {
+    opacity: 0.3;
+    transform: translateX(5px);
+  }
+
+  p {
+    padding: 10px;
+    margin: 5px;
+  }
+
+  input {
+    background: aliceblue;
+    color: black;
+    padding: 18px;
+    margin: 9px;
+    border: 1px solid dimgrey;
+  }
+
+  input:focus {
+    background: black;
+    color: aliceblue;
+    border: 1px solid blue;
+  }
+</style>
+<body>
+<div class="contr">
+  <input id="input" type="text" placeholder="Input :" />
+  <button id="btn" type="button">Enter</button>
+  <p id="reply"></p>
+</div>
+</body>
+<script>
+  const inp = document.getElementById("input").value;
+  const btn = document.getElementById("btn");
+
+  btn.addEventListener("click", function () {
+    const res = fetch("http://localhost:3000/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: inp.value })
+    });
+    const data = res.json();
+    document.getElementById("reply").textContent = data.reply;
+  });
+</script>
+</html>
