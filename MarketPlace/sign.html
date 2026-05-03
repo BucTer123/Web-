@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>Sign Site</title>
+</head>
+<style>
+	body {
+		background: white;
+		color: black;
+		font-family: sans-serif;
+		font-size: medium;
+		font-style: initial;
+		font-weight: bolder;
+		padding: 0;
+		margin: 0;
+		max-width: 1920px;
+		width: 100%;
+		max-height: 1080px;
+		height: 100%;
+	}
+	
+	.main-container {
+		background: whitesmoke;
+		color: black;
+		padding: 192px;
+		margin: 108px;
+	}
+	
+	input {
+		background: ghostwhite;
+		color: black;
+		padding: 18px;
+		margin:9px;
+		opacity: 1;
+		border: 1px solid dimgray;
+	}
+	
+	input:focus {
+		background: black;
+		color: ghostwhite;
+		opacity: 0.9;
+		border: 1px solid blue;
+	}
+	
+	button {
+		background: black;
+		color: ghostwhite;
+		padding: 14px;
+		margin: 7px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	button:focus {
+		background: ghostwhite;
+		color: black;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 0.7;
+		transform: translateY(4px);
+	}
+	
+	button:active {
+		opacity: 0.3;
+		transform: translateX(5px);
+	}
+	
+</style>
+<body>
+	<div class="main-container">
+		<input id="write_username" type="text" placeholder="Write username :" />
+		<input id="write_password" type="password" placeholder="Write password :" />
+		<input id="write_reply_password" type="oassword" placeholder="Repeat :" />
+		<textarea id="date" width="10" height="20"></textarea> 
+		<button id="sign_up_button" type="button">Sing up</button>
+	<div>
+</body>
+<script>
+	const data = document.getElementById("date").value();
+	const usr = document.getElementById("write_username").value();
+	const psw = document.getElementById("write_password").value();
+	const psw_repeat = document.getElementById("write_reply_password").value();
+	const btn_sign = document.getElementById("sign_up_button");
+	
+	btn_sign.addEventListener("click", function () {
+		if (data == "" | usr == "" | psw == "" | psw_repeat == "") {
+			window.alert("ERROR!: Write data user psw repeat psw to sign");
+		} else {
+			window.open("mainfile/main.html");
+		}
+	});
+</script>
+</html>
