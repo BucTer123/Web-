@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>Login</title>
+</head>
+<style>
+	body {
+		background: white;
+		color: black;
+		font-family: sans-serif;
+		font-size: medium;
+		font-style: initial;
+		font-weight: bolder;
+		padding: 0;
+		margin: 0;
+		max-width: 1920px;
+		width: 100%;
+		max-height: 1080px;
+		height: 100%;
+	}
+	
+	.container-login {
+		background: whitesmoke;
+		color: black;
+		padding: 192px;
+		margin: 108px;
+	}
+	
+	.container-signup {
+		background: whitesmoke;
+		color: black;
+		padding: 92px;
+		margin: 80px;
+	}
+	
+	input {
+		background: ghostwhite;
+		color: black;
+		padding: 18px;
+		margin: 9px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	} 
+	
+	input:focus {
+		background: black;
+		color: ghostwhite;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button {
+		background: black;
+		color: ghostwhite;
+		padding: 14px;
+		margin:7px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	button:focus {
+		background: ghostwhite;
+		color: black;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 0.7;
+		transform: translateY(4px);
+	}
+	
+	button:active {
+		opacity: 0.3;
+		transform: translateX(5px);
+	}
+</style>
+<body>
+	<form method="POST" >
+		Username : <input id="usrname"  type="text" name="username" >
+		Password : <input id="password" type="password" name="password" >
+		<button id="log" type="submit">Login</button>
+	</form>
+</body>
+<?php
+$username_data = htmlspecialchars($_POST["username"]);
+$password_data = htmlspecialchars($_POST["password"]);
+
+echo $username_data;
+echo $password_data;
+echo "PIPISKA + SISKA";
+?>
+<script>
+	const btn = document.getElementById("log");
+	const usr = document.getElementById("usrname".value();
+	const psw = document.getElementById("password").value();
+	
+	btn.addEventListener("click", function () {
+		if (usr == "" || psw == "") {
+			window.alert("ERROR!: Write username and password :");
+		} else {
+			break;
+		}
+	});
+</script>
+</html>
