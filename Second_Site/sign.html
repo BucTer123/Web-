@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>Sign site</title>
+</head>
+<style>
+body {
+		background: white;
+		color: black;
+		font-family: sans-serif;
+		font-size: medium;
+		font-weight: bolder;
+		font-style: initial;
+		padding: 0;
+		margin: 0;
+		max-width: 1920px;
+		width: 100%;
+		max-height: 1080px;
+		height: 100vh;
+	}
+	
+	.container-sign {
+		background: gray;
+		padding: 192px;
+		margin: 108px;
+		border: 1px solid dimgray;
+	}
+	
+	.container-login:focus {
+		border: 1px solid blue;
+	}
+	
+	input {
+		background: ghostwhite;
+		color: black;
+		padding: 18px;
+		margin: 9px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	input:focus {
+		background: black;
+		color: ghostwhite;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button {
+		background: blue;
+		color: white;
+		padding: 14px;
+		margin: 7px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	button:focus {
+		background: white;
+		color: black;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 0.7;
+		transform: translateY(4px);
+	}
+	
+	button:active {
+		opacity: 0.3;
+		transform: translateX(5px);
+	}
+</style>
+<body>
+	<div class="container-sign">
+		<input id="write_username_to_sign" type="text" />
+		<input id="write_password_to_sign" type="password" />
+		<button id="button_sign" type="submit">Sign</button>
+	</div>
+</body>
+<script>
+	const A = document.getElementById("write_username_to_sign");
+	const B = document.getElementById("write_password_to_sign");
+	const BTN = document.getElementById("button_sign");
+	
+	BTN.addEventListener("click", function () {
+		if (A.value == "" || B.value == "") {
+			window.alert("ERROR!: Write username and password to sign ");
+		} else {
+			window.location.href("main.html");
+		}
+	});
+	
+	document.getElementById("keydown", function () {
+		if (event.key == "enter") {
+			window.location.href("main.html");
+		}
+	});
+</script>
+<html>
