@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><><></title>
+</head>
+<body>
+    <p id="textz">Clicked :</p>
+    <button id="clicking" type="button">Click</button>
+</body>
+<script>
+    const bun = document.getElementById('clicking');
+
+    export function setupCounter(element) {
+        let counter = 0;
+
+        const adjustCounterValue = value => {
+            if (value >= 100) return value - 100;
+            if (value <= -100) return value + 100;
+            return value;
+        };
+
+        const setCounter = value => {
+            counter = adjustCounterValue(value);
+            const text = `${counter}`;
+            element.innerHTML = text;
+        };
+
+        bun.addEventListener("click", () => setCounter(+1));
+
+        setCounter(0);
+    }
+    document.addEventListener("keydown", function () {
+       if (event.key == "space") {
+           setupCounter(0);
+       }
+       else if (event.key == "enter") {
+           setupCounter(-100);
+       }
+    });
+</script>
+</html>
