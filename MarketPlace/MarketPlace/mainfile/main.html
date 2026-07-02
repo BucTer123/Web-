@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>Market</title>
+</head>
+<style>
+		body {
+		background: white;
+		color: black;
+		font-family: sans-serif;
+		font-size: medium;
+		font-style: initial;
+		font-weight: bolder;
+		padding: 0;
+		margin: 0;
+		max-width: 1920px;
+		width: 100%;
+		max-height: 1080px;
+		height: 100%;
+	}
+	
+	.container-login {
+		background: whitesmoke;
+		color: black;
+		padding: 192px;
+		margin: 108px;
+	}
+	
+	.container-signup {
+		background: whitesmoke;
+		color: black;
+		padding: 92px;
+		margin: 80px;
+	}
+	
+	input {
+		background: ghostwhite;
+		color: black;
+		padding: 18px;
+		margin: 9px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	} 
+	
+	input:focus {
+		background: black;
+		color: ghostwhite;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button {
+		background: black;
+		color: ghostwhite;
+		padding: 14px;
+		margin:7px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	button:focus {
+		background: ghostwhite;
+		color: black;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 0.7;
+		transform: translateY(4px);
+	}
+	
+	button:active {
+		opacity: 0.3;
+		transform: translateX(5px);
+	}
+</style>
+<body>
+	<div class="search-container">
+		<input id="search_input" type="text" placeholder="Search :" />
+		<button id="search_button" type="button" >Search</button>
+	</div>
+	
+	<div class="categories-container">
+		<a href="https://www.aliexpress.com/w/wholesale-cpu.html">CPU</a>
+		<a href="https://www.aliexpress.com/w/wholesale-gpu.html">GPU</a>
+		<a href="https://www.aliexpress.com/w/wholesale-ram.html">RAM</a>
+		<a href="https://www.aliexpress.com/w/wholesale-psu.html">PSU</a>
+	</div>
+</body>
+<script>
+	const inp = document.getElementById("search_input").value();
+	const butt = document.getElementById("search_button");
+	
+	butt.addEventListener("click", function () {
+		if (inp == "CPU" || inp == "cpu") {
+			window.open("https://www.aliexpress.com/w/wholesale-cpu.html");
+		}
+		else if (inp == "GPU" || inp == "gpu") {
+			window.open("https://www.aliexpress.com/w/wholesale-gpu.html");
+		}
+		else if (inp == "RAM" || inp == "ram") {
+			window.open("https://www.aliexpress.com/w/wholesale-ram.html");
+		}
+		else if (inp == "PSU" || inp == "psu") {
+			window.open("https://www.aliexpress.com/w/wholesale-psu.html");
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" >
+	<title>Login</title>
+</head>
+<style>
+	body {
+		background: white;
+		color: black;
+		font-family: sans-serif;
+		font-size: medium;
+		font-style: initial;
+		font-weight: bolder;
+		padding: 0;
+		margin: 0;
+		max-width: 1920px;
+		width: 100%;
+		max-height: 1080px;
+		height: 100%;
+	}
+	
+	.container-login {
+		background: whitesmoke;
+		color: black;
+		padding: 192px;
+		margin: 108px;
+	}
+	
+	.container-signup {
+		background: whitesmoke;
+		color: black;
+		padding: 92px;
+		margin: 80px;
+	}
+	
+	input {
+		background: ghostwhite;
+		color: black;
+		padding: 18px;
+		margin: 9px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	} 
+	
+	input:focus {
+		background: black;
+		color: ghostwhite;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button {
+		background: black;
+		color: ghostwhite;
+		padding: 14px;
+		margin:7px;
+		border: 1px solid dimgray;
+		opacity: 1;
+	}
+	
+	button:focus {
+		background: ghostwhite;
+		color: black;
+		border: 1px solid blue;
+		opacity: 0.9;
+	}
+	
+	button:hover {
+		opacity: 0.7;
+		transform: translateY(4px);
+	}
+	
+	button:active {
+		opacity: 0.3;
+		transform: translateX(5px);
+	}
+</style>
+<body>
+	<div class="container-login">
+		<p>Login  Write username and password</p>
+		<input id="username" type="text" placeholder="Write username :" />
+		<input id="password" type="password" placeholder="Write password :" />
+		<button id="login" type="button">Login</button>
+	</div>
+	
+	<div class="container-signup">
+		<p>Sing Up</p>
+		<button id="sign_butt" type="button">Sing up</button>
+	</div>
+	
+	<div class="login_other_sites">
+		<a href="https://www.facebook.com/login.php/" >Login Facebook</a>
+		<a href="https://github.com/login">Login Github</a>
+		<a href="https://accounts.google.com/v3/signin/identifier?dsh=S1897500966%3A1777824552970454&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AWa2PauXJ4Y62V4eSqJAtEX9nyvlhJhI-Yvfuswnm-gnrreqx6UrdAqVX2qwtqK2ucS3K03G5z0iHA">Login Google</a>
+		<a href="https://x.com/">Login Twitter</a>
+	</div>
+</body>
+<script>
+	const a = document.getElementById("username").value();
+	const b = document.getElementById("password").value();
+	const btn1 = document.getElementById("login");
+	const btn2 = document.getElementById("sign_butt");
+	
+	btn1.addEventListener("click", function () {
+		if (a == "" || b == "") {
+			window.alert("Write username or password");
+		} else {
+			window.open("mainfile/main.html");
+		}
+	});
+	
+	btn2.addEventListener("click", function () {
+		window.opn("sign.html"):
+	});
+</script>
+</html>
