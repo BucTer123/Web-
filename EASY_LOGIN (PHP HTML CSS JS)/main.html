@@ -101,15 +101,14 @@ $password_data = htmlspecialchars($_POST["password"]);
 
 echo $username_data;
 echo $password_data;
-echo "PIPISKA + SISKA";
 ?>
 <script>
 	const btn = document.getElementById("log");
-	const usr = document.getElementById("usrname".value();
-	const psw = document.getElementById("password").value();
+	const usr = document.getElementById("usrname");
+	const psw = document.getElementById("password");
 	
 	btn.addEventListener("click", function () {
-		if (usr == "" || psw == "") {
+		if (usr.value === "" || psw.value === "") {
 			window.alert("ERROR!: Write username and password :");
 		} else {
 			break;
