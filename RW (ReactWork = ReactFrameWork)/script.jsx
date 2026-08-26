@@ -1,7 +1,9 @@
 function Label(text_label, boolean_label) {
-    if (boolean_label === "TRUE") {
-        console.log(text_label);
-        window.alert(text_label);
+    if (boolean_label == true) {
+        return (
+            console.log(text_label);
+            window.alert(text_label);
+        );
     }
 }
 
@@ -54,11 +56,9 @@ function Label_Li(text_li, boolean_li) {
 }
 
 function Exit(status) {
-    if (status === 0) {
-        exit(0);
-    } else {
-        exit(1);
-    }
+    return (
+        exit(status);
+    );
 }
 
 function render_modules(argc, argv) {
