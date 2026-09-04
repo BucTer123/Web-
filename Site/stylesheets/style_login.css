@@ -1,79 +1,80 @@
-body {
-    background: white;
-    color: black;
-    font-family: sans-serif;
-    font-size: medium;
-    font-weight: bolder;
-    font-style: initial;
-    padding: 0;
-    margin: 0;
-    max-width: 1080px;
-    width: 100%;
-    max-height: 1920px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    justify-self: center;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-}
-
-.main_log {
-    background: white;
-    color: black;
-    padding: 108px;
-    margin: 192px;
-    display: flex;
-    border: none;
-}
-
 button {
-    background: black;
-    color: white;
-    padding: 16px;
-    margin: 8px;
-    border: 4px solid black;
-}
-
-button:focus {
-    outline: none;
-    color: black;
-    background: white;
-    border: 1px solid black;
-}
-
-button:hover {
-    opacity: 0.5;
-    transform: translate3d(10%, 5%, 0);
-}
-
-button:active {
-    opacity: 0.1;
-    transform: rotate3d(1, 1, -1, 0deg);
-}
-
-button:disabled {
-    transform: none;
-    opacity: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #183153;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
 }
 
 button:after {
-    content: "";
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #ffd401;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+}
+
+button:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+button span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 18px 25px;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover span {
+  color: #183153;
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 input {
-    background: white;
-    color: black;
-    padding: 16px;
-    margin: 8px;
-    border: 4px solid black;
+  border: 2px solid transparent;
+  width: 15em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+  transition: all 0.5s;
 }
 
+input:hover,
 input:focus {
-    background: black;
-    color: white;
-    border: 1px solid whitesmoke;
+  border: 2px solid #4A9DEC;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
 }
