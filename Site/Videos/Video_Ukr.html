@@ -44,23 +44,16 @@
     }
 </style>
 <body>
-    <input id="go" type="file" />
-    <br><br>
-
     <video id="plaz" accept="video/*" height="640" width="400" src="video_urk.mp4"></video>
 </body>
 <script>
 const pl = document.getElementById("plaz");
-const fo = document.getElementById("go");
 
-fo.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-        const url = URL.createObjectURL(file);
-        pl.src = url;
-        pl.play(url);
-    }
-});
+if (pl == true) {
+    pl.play();
+} else {
+    window.alert("WTF???");
+}
 </script>
 </html>
 
