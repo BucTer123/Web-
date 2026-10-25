@@ -1,0 +1,372 @@
+ 8   <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MOGGOZIN.COM</title>
+	<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f8fafc;
+
+    background:
+        radial-gradient(ellipse at top left, #312e81 0%, transparent 45%),
+        radial-gradient(ellipse at bottom right, #164e63 0%, transparent 45%),
+        #09090f;
+}
+
+.catalogs-wrapper {
+    width: 100%;
+    max-width: 900px;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+
+    padding: 28px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.4),
+        0 0 50px rgba(99, 102, 241, 0.08);
+}
+
+.catalog-electronics-wrapper,
+.catalog-food_and_drink-wrapper,
+.catalog-apartments-wrapper {
+    min-width: 0;
+    min-height: 145px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    padding: 20px 12px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(30, 27, 75, 0.8),
+        rgba(15, 23, 42, 0.8)
+    );
+
+    border: 1px solid rgba(129, 140, 248, 0.2);
+    border-radius: 20px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.catalog-electronics-wrapper span,
+.catalog-food_and_drink-wrapper span,
+.catalog-apartments-wrapper span {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #c7d2fe;
+    letter-spacing: 0.3px;
+
+    transition: color 0.3s ease;
+}
+
+#electronics,
+#food_and_drink,
+#apartments {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+#electronics {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #c084fc);
+
+    box-shadow:
+        0 8px 25px rgba(139, 92, 246, 0.25);
+}
+
+#food_and_drink {
+    background: linear-gradient(135deg, #f97316, #ef4444, #ec4899);
+
+    box-shadow:
+        0 8px 25px rgba(249, 115, 22, 0.2);
+}
+
+#apartments {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #6366f1);
+
+    box-shadow:
+        0 8px 25px rgba(59, 130, 246, 0.25);
+}
+
+.catalog-electronics-wrapper:hover,
+.catalog-food_and_drink-wrapper:hover,
+.catalog-apartments-wrapper:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(165, 180, 252, 0.6);
+
+    background: linear-gradient(
+        145deg,
+        rgba(49, 46, 129, 0.55),
+        rgba(15, 23, 42, 0.95)
+    );
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        0 0 25px rgba(99, 102, 241, 0.1);
+}
+
+.catalog-electronics-wrapper:hover span,
+.catalog-food_and_drink-wrapper:hover span,
+.catalog-apartments-wrapper:hover span {
+    color: #ffffff;
+}
+
+#electronics:hover,
+#food_and_drink:hover,
+#apartments:hover {
+    transform: scale(1.08);
+    filter: brightness(1.15);
+}
+
+.searcher-wrapper {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+
+    margin-top: 8px;
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.65);
+
+    border: 1px solid rgba(129, 140, 248, 0.18);
+    border-radius: 20px;
+}
+
+.input-wrapper {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 9px;
+}
+
+.input-wrapper span,
+.button-wrapper span {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    color: #a5b4fc;
+}
+
+#inp {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+
+    padding: 0 15px;
+
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+
+    background: linear-gradient(
+        120deg,
+        rgba(30, 27, 75, 0.85),
+        rgba(15, 23, 42, 0.95)
+    );
+
+    border: 1px solid #37376b;
+    border-radius: 12px;
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#inp:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 140, 248, 0.12),
+        0 0 20px rgba(99, 102, 241, 0.12);
+}
+.button-wrapper {
+    width: 120px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 9px;
+}
+
+#btn {
+    width: 100%;
+    height: 48px;
+
+    background: linear-gradient(
+        110deg,
+        #6366f1,
+        #8b5cf6,
+        #06b6d4
+    );
+
+    background-size: 200% 200%;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(99, 102, 241, 0.25);
+
+    transition:
+        background-position 0.4s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#btn:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.4),
+        0 0 20px rgba(6, 182, 212, 0.12);
+}
+
+#btn:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+    .catalogs-wrapper {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .catalog-electronics-wrapper,
+    .catalog-food_and_drink-wrapper,
+    .catalog-apartments-wrapper {
+        min-height: 105px;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 18px;
+    }
+
+    #electronics,
+    #food_and_drink,
+    #apartments {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+    }
+
+    .searcher-wrapper {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .button-wrapper {
+        width: 100%;
+    }
+}
+	</style>
+</head>
+<body>
+	<div class="catalogs-wrapper">
+		<div class="catalog-electronics-wrapper">
+			<button id="electronics" type=button></button>
+			<span for="electronics">Electronics</span>
+		</div>
+		<div class="catalog-food_and_drink-wrapper">
+			<button id="food_and_drink" type=button></button>
+			<span for="food_and_drink">Food and Drink</span>
+		</div>
+		<div class="catalog-apartments-wrapper">
+			<button id="apartments" type=button></button>
+			<span for="apartments">Apartments</span>
+		</div>
+		<div class="searcher-wrapper">
+			<div class="input-wrapper">
+				<input id="inp" type=text />
+				<span for="inp">Search</span>
+			</div>
+			<div class="button-wrapper">
+				<button id="btn" type=button></button>
+				<span for="btn">Submit</span>
+			</div>
+		</div>
+	<div>
+</body>
+<script>
+	const electronics = document.getElementById("electronics");
+	const foodanddrink = document.getElementById("food_and_drink");
+	const apartments = document.getElementById("apartments");
+	const inp = document.getElementById("inp");
+	const btn = document.getElementById("btn");
+	const txt = inp.value;
+
+	electronics.addEventListener("click", function() {
+		window.location.href = "electronic.html";
+	});
+	foodanddrink.addEventListener("click", function() {
+		window.location.href = "fooddrink.html";
+	});
+	apartments.addEventListener("click", function() {
+		window.location.href = "apart.html";
+	});
+	btn.addEventListener("click", function() {
+		if (txt === "electronics" || txt === "Electronics") {
+			window.location.href = "electronic.html";
+		} 
+		else if (txt === "food and drink" || txt === "foodanddrink" || txt === "Food And Drink") {
+			window.location.href = "fooddrink.html";
+		} 
+		else if (txt === "apartments" || txt === "Apartments") {
+			window.location.href = "apart.html";
+		}
+	});
+</script>
+</html>
