@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Apartments</title>
+	<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #f8fafc;
+
+    background:
+        radial-gradient(ellipse at 10% 10%, #312e81 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 90%, #164e63 0%, transparent 40%),
+        #080b14;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    padding: 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.075),
+        rgba(255, 255, 255, 0.02)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.searcher {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+
+    padding: 22px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(49, 46, 129, 0.28),
+        rgba(15, 23, 42, 0.75)
+    );
+
+    border: 1px solid rgba(129, 140, 248, 0.2);
+    border-radius: 20px;
+}
+
+.input-wrapper {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+.input-wrapper span,
+.button-wrapper span {
+    color: #a5b4fc;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+}
+
+#inp {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+
+    background: rgba(8, 11, 25, 0.8);
+
+    border: 1px solid #37376b;
+    border-radius: 12px;
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+#inp:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 140, 248, 0.12),
+        0 0 22px rgba(99, 102, 241, 0.12);
+}
+
+.searcher .button-wrapper {
+    width: 130px;
+
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+#btn {
+    width: 100%;
+    height: 50px;
+
+    background: linear-gradient(
+        110deg,
+        #6366f1,
+        #8b5cf6,
+        #06b6d4
+    );
+
+    background-size: 200% 200%;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    cursor: pointer;
+
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.25);
+
+    transition: 0.3s ease;
+}
+
+#btn:hover {
+    background-position: 100% 50%;
+    transform: translateY(-2px);
+
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+#btn:active {
+    transform: scale(0.97);
+}
+
+.mainlocations-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.mainlocations-wrapper > div {
+    min-width: 0;
+    min-height: 125px;
+    padding: 18px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 75, 0.72),
+        rgba(15, 23, 42, 0.85)
+    );
+
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 18px;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.mainlocations-wrapper span {
+    color: #cbd5e1;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.4px;
+
+    transition: color 0.25s ease;
+}
+
+.mainlocations-wrapper button {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#poznan {
+    background: linear-gradient(135deg, #22c55e, #0d9488);
+}
+
+#warszawa {
+    background: linear-gradient(135deg, #fb7185, #e11d48);
+}
+
+#wroclaw {
+    background: linear-gradient(135deg, #f59e0b, #ea580c);
+}
+
+#gdansk {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+}
+
+#gdynia {
+    background: linear-gradient(135deg, #2dd4bf, #0891b2);
+}
+
+#katowice {
+    background: linear-gradient(135deg, #a78bfa, #7c3aed);
+}
+
+#krakow {
+    background: linear-gradient(135deg, #f472b6, #9333ea);
+}
+
+#szczecin {
+    background: linear-gradient(135deg, #60a5fa, #4f46e5);
+}
+
+#lodz {
+    background: linear-gradient(135deg, #facc15, #f97316);
+}
+
+#kielce {
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+}
+
+#rzeszow {
+    background: linear-gradient(135deg, #c084fc, #a21caf);
+}
+
+#lublin {
+    background: linear-gradient(135deg, #fb923c, #dc2626);
+}
+
+#zielonagora {
+    background: linear-gradient(135deg, #86efac, #059669);
+}
+
+#olsztyn {
+    background: linear-gradient(135deg, #67e8f9, #0e7490);
+}
+
+#torun {
+    background: linear-gradient(135deg, #fda4af, #be123c);
+}
+
+#opole {
+    background: linear-gradient(135deg, #818cf8, #4338ca);
+}
+
+#bydgoszcz {
+    background: linear-gradient(135deg, #5eead4, #0f766e);
+}
+
+.mainlocations-wrapper > div:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(129, 140, 248, 0.55);
+
+    background: linear-gradient(
+        145deg,
+        rgba(49, 46, 129, 0.45),
+        rgba(15, 23, 42, 0.95)
+    );
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.mainlocations-wrapper > div:hover span {
+    color: #ffffff;
+}
+
+.mainlocations-wrapper button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.15);
+
+    box-shadow: 0 0 22px rgba(129, 140, 248, 0.25);
+}
+
+.mainlocations-wrapper button:active {
+    transform: scale(0.94);
+}
+
+button:focus-visible {
+    outline: 2px solid #c4b5fd;
+    outline-offset: 4px;
+}
+
+@media (max-width: 800px) {
+    .mainlocations-wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 16px 10px;
+        align-items: flex-start;
+    }
+
+    .main-wrapper {
+        padding: 14px;
+        gap: 18px;
+        border-radius: 20px;
+    }
+
+    .searcher {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .searcher .button-wrapper {
+        width: 90px;
+    }
+
+    .mainlocations-wrapper {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .mainlocations-wrapper > div {
+        min-height: 110px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+	</style>
+</head>
+<body>
+	<div class="main-wrapper">
+		<div class="searcher">
+			<div class="input-wrapper">
+				<input id="inp" type=text />
+				<span for="inp">Write name of city</span>
+			</div>
+			<div class="button-wrapper">
+				<button id="btn" type=button></button>
+				<span for="btn">Submit</span>
+			</div>
+		</div>
+		<div class="mainlocations-wrapper">
+			<div class="poznan-wrapper">
+				<button id="poznan" type=button></button>
+				<span for="poznan">Poznan</span>
+			</div>
+			<div class="warszawa-wrapper">
+				<button id="warszawa" type=button></button>
+				<span for="warszawa">Warszawa</span>
+			</div>
+			<div class="wroclaw-wrapper">
+				<button id="wroclaw" type=button></button>
+				<span for="wroclaw">Wroclaw</span>
+			</div>
+			<div class="gdansk-wrapper">
+				<button id="gdansk" type=button></button>
+				<span for="gdansk">Gdansk</span>
+			</div>
+			<div class="gdynia-wrapper">
+				<button id="gdynia" type=button></button>
+				<span for="gdynia">Gdynia</span>
+			</div>
+			<div class="katowice-wrapper">
+				<button id="katowice" type=button></button>
+				<span for="katowice">Katowice</span>
+			</div>
+			<div class="krakow-wrapper">
+				<button id="krakow" type=button></button>
+				<span for="krakow">Krakow</span>
+			</div>
+			<div class="szczecin-wrapper">
+				<button id="szczecin" type=button></button>
+				<span for="szczecin">Szczecin</span>
+			</div>
+			<div class="lodz-wrapper">
+				<button id="lodz" type=button></button>
+				<span for="lodz">Lodz</span>
+			</div>
+			<div class="kielce-wrapper">
+				<button id="kielce" type=button></button>
+				<span for="kielce">Kielce</span>
+			</div>
+			<div class="rzeszow-wrapper">
+				<button id="rzeszow" type=button></button>
+				<span for="rzeszow">Rzeszow</span>
+			</div>
+			<div class="lublin-wrapper">
+				<button id="lublin" type=button></button>
+				<span for="lublin">Lublin</span>
+			</div>
+			<div class="zielonagora-wrapper">
+				<button id="zielonagora" type=button></button>
+				<span for="zielonagora">Zielona Gora</span>
+			</div>
+			<div class="olsztyn-wrapper">
+				<button id="olsztyn" type=button></button>
+				<span for="olsztyn">Olsztyn</span>
+			</div>
+			<div class="torun-wrapper">
+				<button id="torun" type=button></button>
+				<span for="torun">Torun</span>
+			</div>
+			<div class="opole-wrapper">
+				<button id="opole" type=button></button>
+				<span for="opole">Opole</span>
+			</div>
+			<div class="bydgoszcz-wrapper">
+				<button id="bydgoszcz" type=button></button>
+				<span for="bydgoszcz">Bydgoszcz</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	const kielce = document.getElementById("kielce");
+	const rzeszow = document.getElementById("rzeszow");
+	const lublin = document.getElementById("lublin");
+	const zielonagora = document.getElementById("zielonagora");
+	const olsztyn = document.getElementById("olsztyn");
+	const torun = document.getElementById("torun");
+	const opole = document.getElementById("opole");
+	const bydgoszcz = document.getElementById("bydgoszcz");
+	const inp = document.getElementById("inp");
+	const txt = inp.value;
+	const btn = document.getElementById("btn");
+	const poznan = document.getElementById("poznan");
+	const warszawa = document.getElementById("warszawa");
+	const wroclaw = document.getElementById("wroclaw");
+	const szczecin = document.getElementById("szczecin");
+	const gdansk = document.getElementById("gdansk");
+	const gdynia = document.getElementById("gdynia");
+	const katowice = document.getElementById("katowice");
+	const krakow = document.getElementById("krakow");
+
+	function check_city() {
+		if (txt === "warszawa" || txt === "Warszawa") {
+			window.location.href = "https://www.olx.pl/nieruchomosci/warszawa/";
+		}
+		else if (txt === "poznan" || txt === "Poznan" || txt === "poznań" || txt === "Poznań") {
+			window.location.href = "https://www.olx.pl/nieruchomosci/poznan/";
+		}
+		else if (txt === "wroclaw" || txt === "Wroclaw" || txt === "Wrocław" || txt === "wrocław") {
+			window.location.href = "https://www.olx.pl/nieruchomosci/wroclaw/";
+		}
+		else if (txt === "Gdańsk" || txt === "gdańsk" || txt === "gdansk" || txt === "Gdansk") {
+			window.location.href = "https://www.olx.pl/nieruchomosci/gdansk/";
+		}
+		else if (txt === "Gdynia" || txt === "gdynia") {
+			window.location.href = "https://www.olx.pl/nieruchomosci/gdynia";
+		}
+	}
+
+	btn.addEventListener("click", function() {
+		check_city();
+	});
+</script>
+</html>
