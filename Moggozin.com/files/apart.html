@@ -466,7 +466,7 @@ button:focus-visible {
 	const krakow = document.getElementById("krakow");
 
 	function check_city() {
-		if (txt === "warszawa" || txt === "Warszawa") {
+		if (txt === "warszawa".toLowerCase()) {
 			window.location.href = "https://www.olx.pl/nieruchomosci/warszawa/";
 		}
 		else if (txt === "poznan".toLowerCase()) {
@@ -503,6 +503,10 @@ button:focus-visible {
 
 	btn.addEventListener("click", function() {
 		check_city();
+	});
+
+	zielonagora.addEventListener("click", function() {
+		window.location.href = "https://www.olx.pl/nieruchomosci/zielonagora";
 	});
 </script>
 </html>
