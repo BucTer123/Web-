@@ -56,6 +56,7 @@ body {
 
 .catalog-electronics-wrapper,
 .catalog-food_and_drink-wrapper,
+.catalog-automotive,
 .catalog-apartments-wrapper {
     min-width: 0;
     min-height: 145px;
@@ -86,6 +87,7 @@ body {
 
 .catalog-electronics-wrapper span,
 .catalog-food_and_drink-wrapper span,
+.catalog-automotive-wrapper span,
 .catalog-apartments-wrapper span {
     font-size: 14px;
     font-weight: 600;
@@ -97,6 +99,7 @@ body {
 }
 
 #electronics,
+#automotive
 #food_and_drink,
 #apartments {
     width: 64px;
@@ -127,6 +130,13 @@ body {
         0 8px 25px rgba(249, 115, 22, 0.2);
 }
 
+#automotive {
+	background: linear-gradient(135deg, #f97316, #ef4444, #ec4899);
+
+	box-shadow:
+		0 8px 25px rgba(249, 115, 22, 0.2);
+}
+
 #apartments {
     background: linear-gradient(135deg, #06b6d4, #3b82f6, #6366f1);
 
@@ -136,6 +146,7 @@ body {
 
 .catalog-electronics-wrapper:hover,
 .catalog-food_and_drink-wrapper:hover,
+.catalog-automotive-wrapper: hover,
 .catalog-apartments-wrapper:hover {
     transform: translateY(-5px);
 
@@ -154,12 +165,14 @@ body {
 
 .catalog-electronics-wrapper:hover span,
 .catalog-food_and_drink-wrapper:hover span,
+.catalog-automotive-wrapper:hover span, 
 .catalog-apartments-wrapper:hover span {
     color: #ffffff;
 }
 
 #electronics:hover,
 #food_and_drink:hover,
+#automotive,
 #apartments:hover {
     transform: scale(1.08);
     filter: brightness(1.15);
@@ -288,6 +301,7 @@ body {
 
     .catalog-electronics-wrapper,
     .catalog-food_and_drink-wrapper,
+	.catalog-automotive-wrapper,
     .catalog-apartments-wrapper {
         min-height: 105px;
         flex-direction: row;
@@ -297,6 +311,7 @@ body {
 
     #electronics,
     #food_and_drink,
+	#automotive
     #apartments {
         width: 50px;
         height: 50px;
@@ -322,11 +337,15 @@ body {
 		</div>
 		<div class="catalog-food_and_drink-wrapper">
 			<button id="food_and_drink" type=button></button>
-			<span for="food_and_drink">Food and Drink</span>
+			<span for="food_and_drink">For 0 Zloty</span>
 		</div>
 		<div class="catalog-apartments-wrapper">
 			<button id="apartments" type=button></button>
 			<span for="apartments">Apartments</span>
+		</div>
+		<div class="catalog-automotive-wrapper">
+			<button id="automotive" type=button></button>
+			<span for="automotive">Automotive</span>
 		</div>
 		<div class="searcher-wrapper">
 			<div class="input-wrapper">
@@ -344,6 +363,7 @@ body {
 	const electronics = document.getElementById("electronics");
 	const foodanddrink = document.getElementById("food_and_drink");
 	const apartments = document.getElementById("apartments");
+	const automotive = document.getElementById("automotive");
 	const inp = document.getElementById("inp");
 	const btn = document.getElementById("btn");
 	const txt = inp.value;
@@ -352,10 +372,13 @@ body {
 		window.location.href = "electronic.html";
 	});
 	foodanddrink.addEventListener("click", function() {
-		window.location.href = "fooddrink.html";
+		window.location.href = "for0.html";
 	});
 	apartments.addEventListener("click", function() {
 		window.location.href = "apart.html";
+	});
+	automotive.addEventListener("click", function() {
+		window.location.href = "auto.html";
 	});
 	btn.addEventListener("click", function() {
 		if (txt === "electronics".toLowerCase()) {
@@ -366,6 +389,9 @@ body {
 		}
 		else if (txt === "apartments".toLowerCase()) {
 			window.location.href = "apart.html";
+		}
+		else if (txt === "automotive".toLowerCase()) {
+			window.location.href = "auto.html";
 		}
 	});
 </script>
