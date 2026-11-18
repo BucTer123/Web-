@@ -159,26 +159,14 @@ body {
 <script>
 	const inp = document.getElementById("login");
 	const btn = document.getElementById("btn");
-	const txt = inp.value;
-
-	function check() {
-		if (txt) {
-			window.location.href = "main.html";
-		} else {
-			window.alert("ERROR!: Write username!");
-		}
-	}
 
 	btn.addEventListener("click", function() {
-		check();
-	});
+		const text = inp.value.trim().toLowerCase();
 
-	document.getElementById("keydown", function(event) {
-		if (event.type === "enter") {
-			check();
-		}
-		else if (event.type === "e") {
-			check();
+		if (text === "") {
+			window.alert("ERROR!: Write username !");
+		} else {
+			window.location.href = "main.html";
 		}
 	});
 
