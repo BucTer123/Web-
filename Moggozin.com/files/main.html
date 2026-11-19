@@ -366,7 +366,6 @@ body {
 	const automotive = document.getElementById("automotive");
 	const inp = document.getElementById("inp");
 	const btn = document.getElementById("btn");
-	const txt = inp.value;
 
 	electronics.addEventListener("click", function() {
 		window.location.href = "electronic.html";
@@ -381,16 +380,18 @@ body {
 		window.location.href = "auto.html";
 	});
 	btn.addEventListener("click", function() {
-		if (txt === "electronics".toLowerCase()) {
+		const txt = inp.value.trim().toLowerCase();
+		
+		if (txt === "electronics") {
 			window.location.href = "electronic.html";
 		} 
-		else if (txt === "for0".toLowerCase()) {
+		else if (txt === "for0") {
 			window.location.href = "for0.html";
 		}
-		else if (txt === "apartments".toLowerCase()) {
+		else if (txt === "apartments") {
 			window.location.href = "apart.html";
 		}
-		else if (txt === "automotive".toLowerCase()) {
+		else if (txt === "automotive") {
 			window.location.href = "auto.html";
 		}
 	});
