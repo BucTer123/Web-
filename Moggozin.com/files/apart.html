@@ -465,6 +465,7 @@ button:focus-visible {
 	const krakow = document.getElementById("krakow");
 
 	function check_city() {
+		const txt = ip.value.trim().toLowerCase();
 		if (txt === "warszawa".toLowerCase()) {
 			window.location.href = "https://www.olx.pl/nieruchomosci/warszawa/";
 		}
